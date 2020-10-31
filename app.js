@@ -32,8 +32,16 @@ function generatePassword() {
       newPassChar = + specialChar
       newPass += [Math.floor(Math.random() * specialChar.length)]
     }
-
-    return newPass
+    console.log(newPassChar);
+    for (let i = 0; i < length; i++) {
+      let newChar = newPassChar[Math.floor(Math.random() * newPassChar.length)]
+      newPass += newChar
+    }
+    console.log(newPass);
+return newPass
+  }
+  else (length < 8 || length > 128) {
+    alert('Sorry, but your number choice was not within allowed parameters.')
   }
 }
 
