@@ -8,12 +8,12 @@ function generatePassword() {
   let lower = confirm('Would you like lowercase letters?')
   let num = confirm('Would you like numbers?')
   let special = confirm('Would you like special characters?')
-  let upperChar = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-  let lowerChar = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-  let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-  let specialChar = ['!', '@', '#', '$', '%', '^', '&', '*', '9', '(', ')', '-', '=', '+']
+  let upperChar = ('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+  let lowerChar = ('abcdefghijklmnopqrstuvwxyz')
+  let numbers = ('1234567890')
+  let specialChar = ('!@#$%^&*9()-=+')
 
-  if (length >= 8 && length <= 128) {
+  if (length > 8 && length < 128) {
     let newPass = ''
     let newPassChar = ''
     if (upper === true) {
@@ -21,29 +21,30 @@ function generatePassword() {
       newPass += [Math.floor(Math.random() * upperChar.length)]
     }
     if (lower === true) {
-      newPassChar = + lowerChar
+      newPassChar += lowerChar
       newPass += [Math.floor(Math.random() * lowerChar.length)]
     }
-    if (numbers === true) {
-      newPassChar = + numbers
+    if (num === true) {
+      newPassChar += numbers
       newPass += [Math.floor(Math.random() * numbers.length)]
     }
     if (special === true) {
-      newPassChar = + specialChar
+      newPassChar += specialChar
       newPass += [Math.floor(Math.random() * specialChar.length)]
     }
-    console.log(newPassChar);
-    for (let i = 0; i < length; i++) {
+    let newLength = length - newPass.length
+    for (let i = 0; i < newLength; i++) {
       let newChar = newPassChar[Math.floor(Math.random() * newPassChar.length)]
       newPass += newChar
     }
+    console.log(newPassChar);
     console.log(newPass);
 return newPass
   }
-  else (length < 8 || length > 128) {
+  else (length < 8 || length > 128) 
     alert('Sorry, but your number choice was not within allowed parameters.')
   }
-}
+
 
 
 
